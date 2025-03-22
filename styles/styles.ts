@@ -33,10 +33,14 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   buttonContainer: {
+    marginTop: 10, //add
+    marginBottom: 5, //add
     flexDirection: "row",
     justifyContent: "space-between",
   },
   button: {
+    marginTop: 10, //add
+    marginBottom: 5, //add
     backgroundColor: "#007bff",
     paddingVertical: 10,
     paddingHorizontal: 16,
