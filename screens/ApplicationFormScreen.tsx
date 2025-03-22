@@ -36,12 +36,14 @@ const ApplicationFormScreen: React.FC<Props> = ({ route, navigation }) => {
       <TextInput
         style={styles.input}
         placeholder="Full Name"
+        placeholderTextColor="#C0C0C0"
         value={name}
         onChangeText={setName}
       />
       <TextInput
         style={styles.input}
         placeholder="Email"
+        placeholderTextColor="#C0C0C0"
         value={email}
         onChangeText={setEmail}
         keyboardType="email-address"
@@ -49,6 +51,7 @@ const ApplicationFormScreen: React.FC<Props> = ({ route, navigation }) => {
       <TextInput
         style={styles.input}
         placeholder="Contact Number"
+        placeholderTextColor="#C0C0C0"
         value={contact}
         onChangeText={setContact}
         keyboardType="phone-pad"
@@ -56,6 +59,7 @@ const ApplicationFormScreen: React.FC<Props> = ({ route, navigation }) => {
       <TextInput
         style={styles.textArea}
         placeholder="Why should we hire you?"
+        placeholderTextColor="#C0C0C0"
         value={reason}
         onChangeText={setReason}
         multiline
