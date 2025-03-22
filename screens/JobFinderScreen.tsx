@@ -29,6 +29,7 @@ const JobFinderScreen: React.FC = () => {
       <TextInput
         style={styles.searchInput}
         placeholder="Search jobs..."
+        placeholderTextColor="#C0C0C0"
         value={search}
         onChangeText={setSearch}
       />

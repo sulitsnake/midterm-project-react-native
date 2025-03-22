@@ -18,7 +18,7 @@ const JobItem: React.FC<JobItemProps> = ({ job, onSave, onApply, isSaved }) => {
       <Text style={styles.jobSalary}>{job.salary}</Text>
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button} onPress={onSave}>
-          <Text>{isSaved ? "Saved" : "Save Job"}</Text>
+          <Text style = {styles.buttonText}>{isSaved ? "Saved" : "Save Job"}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={onApply}>
           <Text>Apply</Text>
