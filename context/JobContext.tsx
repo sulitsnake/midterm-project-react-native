@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect, ReactNode } from "react";
-import jobsData from "../data/jobs.json"; // Import JSON data
+import { fetchJobs } from "../api/jobApi"; 
 import { Job } from "../types/jobTypes";
-import uuid from "react-native-uuid"; // ✅ Use react-native-uuid
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface JobContextType {
   jobs: Job[];
@@ -17,33 +17,38 @@ export const JobProvider: React.FC<{ children: ReactNode }> = ({ children }) => 
   const [savedJobs, setSavedJobs] = useState<Job[]>([]);
 
   useEffect(() => {
-    if (jobsData.jobs && Array.isArray(jobsData.jobs)) {
-
-      const jobsWithId = jobsData.jobs.map((job) => ({
-        id: uuid.v4() as string, //id generator
-        title: job.title,
-        company: job.companyName,
-        salary: job.minSalary ? `$${job.minSalary} - $${job.maxSalary}` : "Not specified",
-        description: job.description,
-        jobType: job.jobType,
-        workModel: job.workModel,
-        location: job.locations ? job.locations.join(", ") : "Unknown",
-        applicationLink: job.applicationLink,
-      }));
-      setJobs(jobsWithId);
-    } else {
-      console.error("Invalid job data structure in jobs.json");
-    }
+    const loadJobs = async () => {
+      const fetchedJobs = await fetchJobs();
+      setJobs(fetchedJobs);
+    };
+    loadJobs();
   }, []);
 
-  const saveJob = (job: Job) => {
-    setSavedJobs((prevJobs) =>
-      prevJobs.some((j) => j.id === job.id) ? prevJobs : [...prevJobs, job]
-    );
+  useEffect(() => {
+    const loadSavedJobs = async () => {
+      const saved = await AsyncStorage.getItem("savedJobs");
+      if (saved) {
+        setSavedJobs(JSON.parse(saved));
+      }
+    };
+    loadSavedJobs();
+  }, []);
+
+  const saveJob = async (job: Job) => {
+    setSavedJobs((prevJobs) => {
+      if (prevJobs.some((j) => j.id === job.id)) return prevJobs;
+      const updatedJobs = [...prevJobs, job];
+      AsyncStorage.setItem("savedJobs", JSON.stringify(updatedJobs));
+      return updatedJobs;
+    });
   };
 
-  const removeJob = (id: string) => {
-    setSavedJobs((prevJobs) => prevJobs.filter((job) => job.id !== id));
+  const removeJob = async (id: string) => {
+    setSavedJobs((prevJobs) => {
+      const updatedJobs = prevJobs.filter((job) => job.id !== id);
+      AsyncStorage.setItem("savedJobs", JSON.stringify(updatedJobs));
+      return updatedJobs;
+    });
   };
 
   return (
