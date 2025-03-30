@@ -32,12 +32,11 @@ const AppContent = () => {
 
                 <TouchableOpacity onPress={toggleTheme}>
                   <Ionicons 
-                  name = {isDarkMode ? "moon-stars" : "moon"}
-                  size = {24} 
-                  color = {isDarkMode ? "#d4bb63" : "black"} 
-                  style = {{ marginRight:15 }}
+                    name={isDarkMode ? "moon" : "moon-outline"} 
+                    size={24} 
+                    color={isDarkMode ? "#d4bb63" : "black"} 
+                    style={{ marginRight: 15 }} 
                   />
-
                 </TouchableOpacity>
               </View>
             ),
@@ -55,7 +54,12 @@ const AppContent = () => {
                   <Ionicons name="briefcase-outline" size={24} color={isDarkMode ? "white" : "black"} />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={toggleTheme}>
-                  <Ionicons name="moon" size={24} color={isDarkMode ? "yellow" : "black"} />
+                  <Ionicons 
+                    name={isDarkMode ? "moon" : "moon-outline"} 
+                    size={24} 
+                    color={isDarkMode ? "#d4bb63" : "black"} 
+                    style={{ marginRight: 15 }} 
+                  />
                 </TouchableOpacity>
               </View>
             ),
@@ -76,7 +80,12 @@ const AppContent = () => {
                   <Ionicons name="bookmark-outline" size={24} color={isDarkMode ? "white" : "black"} />
                 </TouchableOpacity>
                 <TouchableOpacity onPress={toggleTheme}>
-                  <Ionicons name="moon" size={24} color={isDarkMode ? "yellow" : "black"} />
+                  <Ionicons 
+                    name={isDarkMode ? "moon" : "moon-outline"} 
+                    size={24} 
+                    color={isDarkMode ? "#d4bb63" : "black"} 
+                    style={{ marginRight: 15 }} 
+                  />
                 </TouchableOpacity>
               </View>
             ),

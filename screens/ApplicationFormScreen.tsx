@@ -4,6 +4,7 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../navigation/types";
 import { useTheme } from "../context/ThemeContext"; 
 import styles from "../styles/styles";
+import { Alert } from "react-native";
 
 type Props = NativeStackScreenProps<RootStackParamList, "ApplicationForm">;
 
@@ -62,12 +63,38 @@ const ApplicationFormScreen: React.FC<Props> = ({ route, navigation }) => {
 
   const submitApplication = () => {
     if (validateForm()) {
-      navigation.navigate("JobFinder");
-      setName("");
-      setEmail("");
-      setContact("");
-      setReason("");
-      setErrors({ name: "", email: "", contact: "", reason: "" });
+      Alert.alert(
+        "Confirm Application",
+        `Would you like to apply for ${jobTitle}?`,
+        [
+          {
+            text: "No",
+            style: "cancel",
+          },
+          {
+            text: "Yes",
+            onPress: () => {
+              Alert.alert(
+                "Application Submitted!",
+                "Your application has been successfully submitted.",
+                [
+                  {
+                    text: "Okay",
+                    onPress: () => {
+                      navigation.navigate("JobFinder");
+                      setName("");
+                      setEmail("");
+                      setContact("");
+                      setReason("");
+                      setErrors({ name: "", email: "", contact: "", reason: "" });
+                    },
+                  },
+                ]
+              );
+            },
+          },
+        ]
+      );
     }
   };
 
