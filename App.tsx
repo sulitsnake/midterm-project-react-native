@@ -14,9 +14,21 @@ const App = () => {
     <JobProvider>
       <NavigationContainer>
         <Stack.Navigator initialRouteName="JobFinder">
-          <Stack.Screen name="JobFinder" component={JobFinderScreen} />
-          <Stack.Screen name="SavedJobs" component={SavedJobsScreen} />
-          <Stack.Screen name="ApplicationForm" component={ApplicationFormScreen} />
+          <Stack.Screen 
+            name="JobFinder" 
+            component={JobFinderScreen} 
+            options={{ title: "Welcome to the TS Job Finder" }} 
+          />
+          <Stack.Screen 
+            name="SavedJobs" 
+            component={SavedJobsScreen} 
+            options={{ title: "Your saved jobs" }} 
+          />
+          <Stack.Screen 
+            name="ApplicationForm" 
+            component={ApplicationFormScreen} 
+            options={{ title: "Apply for the Job" }} 
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </JobProvider>

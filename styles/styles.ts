@@ -33,14 +33,14 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   buttonContainer: {
-    marginTop: 10, //add
-    marginBottom: 5, //add
+    marginTop: 10, 
+    marginBottom: 5, 
     flexDirection: "row",
     justifyContent: "space-between",
   },
   button: {
-    marginTop: 10, //add
-    marginBottom: 5, //add
+    marginTop: 10,
+    marginBottom: 5, 
     backgroundColor: "#007bff",
     paddingVertical: 10,
     paddingHorizontal: 16,
@@ -100,7 +100,21 @@ const styles = StyleSheet.create({
     marginTop: -10,
     marginBottom: 10,
     alignSelf: "flex-start", 
-  }
+  },
+
+  emptyContainer: {
+    flex: 1,
+    justifyContent: "flex-start",
+    alignItems: "center",
+    marginTop: 200, 
+  },
+  emptyText: {
+    fontSize: 18,
+    color: "#888",
+    textAlign: "center",
+  },
+  
+  
   
 
 

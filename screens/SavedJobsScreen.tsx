@@ -16,26 +16,34 @@ const SavedJobsScreen: React.FC<Props> = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <FlatList
-        data={savedJobs}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <View style={styles.jobItem}>
-            <Text style={styles.jobTitle}>{item.title}</Text>
-            <Text style={styles.jobCompany}>{item.company}</Text>
-            <Text style={styles.jobSalary}>{item.salary}</Text>
-            <TouchableOpacity style={styles.button} onPress={() => removeJob(item.id)}>
-              <Text style={styles.buttonText}>Remove</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => navigation.navigate("ApplicationForm", { jobId: item.id, jobTitle: item.title })}
-            >
-              <Text style={styles.buttonText}>Apply</Text>
-            </TouchableOpacity>
-          </View>
-        )}
-      />
+      {savedJobs.length === 0 ? (
+        <View style={styles.emptyContainer}>
+          <Text style={styles.emptyText}>No jobs saved. Apply for one to get started.</Text>
+        </View>
+      ) : (
+        <FlatList
+          data={savedJobs}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <View style={styles.jobItem}>
+              <Text style={styles.jobTitle}>{item.title}</Text>
+              <Text style={styles.jobCompany}>{item.company}</Text>
+              <Text style={styles.jobSalary}>{item.salary}</Text>
+              <TouchableOpacity style={styles.button} onPress={() => removeJob(item.id)}>
+                <Text style={styles.buttonText}>Remove</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() =>
+                  navigation.navigate("ApplicationForm", { jobId: item.id, jobTitle: item.title })
+                }
+              >
+                <Text style={styles.buttonText}>Apply</Text>
+              </TouchableOpacity>
+            </View>
+          )}
+        />
+      )}
     </View>
   );
 };
