@@ -45,7 +45,7 @@ const ApplicationFormScreen: React.FC<Props> = ({ route, navigation }) => {
       newErrors.contact = "Contact number is required.";
       valid = false;
     } else if (contact.replace(/\D/g, "").length < 8) {
-      newErrors.contact = "Contact number must have at least 8 digits.";
+      newErrors.contact = "Contact number must have a valid number of digits (atleast 8).";
       valid = false;
     }
 
@@ -154,9 +154,10 @@ const ApplicationFormScreen: React.FC<Props> = ({ route, navigation }) => {
       />
       {errors.reason ? <Text style={[styles.errorText, isDarkMode && styles.darkErrorText]}>{errors.reason}</Text> : null}
 
-      <TouchableOpacity style={styles.button} onPress={submitApplication}>
-        <Text style={styles.buttonText}>Submit Application</Text>
+      <TouchableOpacity style={[styles.button, styles.fullWidthButton]} onPress={submitApplication}>
+      <Text style={styles.buttonText}>Submit Application</Text>
       </TouchableOpacity>
+
     </ScrollView>
   );
 };

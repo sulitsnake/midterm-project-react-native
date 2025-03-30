@@ -24,7 +24,7 @@ const JobFinderScreen: React.FC = () => {
 
   return (
     <View style={[styles.container, isDarkMode && styles.darkContainer]}>
-  
+
       <TextInput
         style={[styles.searchInput, isDarkMode && styles.darkInput]}
         placeholder="Search jobs..."

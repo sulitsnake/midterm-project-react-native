@@ -33,17 +33,25 @@ const SavedJobsScreen: React.FC<Props> = ({ navigation }) => {
               <Text style={[styles.jobTitle, isDarkMode && styles.darkText]}>{item.title}</Text>
               <Text style={[styles.jobCompany, isDarkMode && styles.darkText]}>{item.company}</Text>
               <Text style={[styles.jobSalary, isDarkMode && styles.darkText]}>{item.salary}</Text>
-              <TouchableOpacity style={styles.button} onPress={() => removeJob(item.id)}>
-                <Text style={styles.buttonText}>Remove</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.button}
-                onPress={() =>
-                  navigation.navigate("ApplicationForm", { jobId: item.id, jobTitle: item.title })
-                }
-              >
-                <Text style={styles.buttonText}>Apply</Text>
-              </TouchableOpacity>
+
+              <View style={styles.buttonContainer}>
+                <TouchableOpacity 
+                  style={[styles.button, styles.removeButton]} 
+                  onPress={() => removeJob(item.id)}
+                >
+                  <Text style={styles.buttonText}>Remove</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity 
+                  style={[styles.button, styles.applyButton]} 
+                  onPress={() =>
+                    navigation.navigate("ApplicationForm", { jobId: item.id, jobTitle: item.title })
+                  }
+                >
+                  <Text style={styles.buttonText}>Apply</Text>
+                </TouchableOpacity>
+              </View>
+
             </View>
           )}
         />

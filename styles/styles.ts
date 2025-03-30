@@ -39,18 +39,19 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   button: {
+    width: 120, 
+    height: 40, 
+    justifyContent: "center", 
+    alignItems: "center", 
     marginTop: 10,
-    marginBottom: 5, 
+    marginBottom: 5,
     backgroundColor: "#007bff",
-    paddingVertical: 10,
-    paddingHorizontal: 16,
     borderRadius: 6,
   },
   buttonText: {
     color: "#fff",
     fontSize: 14,
     fontWeight: "bold",
-    paddingVertical:5,
   },
   searchInput: {
     height: 40,
@@ -131,7 +132,7 @@ const styles = StyleSheet.create({
   },
   
   darkText: {
-    color: "#fff",
+    color: "#cbd6cf",
   },
   
   darkInput: {
@@ -148,6 +149,25 @@ const styles = StyleSheet.create({
   darkErrorText: {
     color: "#ff6961",
   },
+  
+  saveButton: {
+    backgroundColor: "#2c82bf", //blue
+  },
+  applyButton: {
+    backgroundColor: "#2cbf56", // green
+  },
+  removeButton: {
+    backgroundColor: "#bf452c", //red
+  },
+  fullWidthButton: {
+    width: "100%",  
+    backgroundColor: "#82d102", //yellow green
+    alignSelf: "stretch",
+    marginTop: 10,
+  },
+  
+  
+  
 
 
 });

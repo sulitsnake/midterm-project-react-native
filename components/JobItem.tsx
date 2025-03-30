@@ -20,10 +20,10 @@ const JobItem: React.FC<JobItemProps> = ({ job, onSave, onApply, isSaved }) => {
       <Text style={[styles.jobCompany, isDarkMode && styles.darkText]}>{job.company}</Text>
       <Text style={[styles.jobSalary, isDarkMode && styles.darkText]}>{job.salary}</Text>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={onSave}>
+        <TouchableOpacity style={[styles.button, styles.saveButton]} onPress={onSave}>
           <Text style={styles.buttonText}>{isSaved ? "Saved" : "Save Job"}</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={onApply}>
+        <TouchableOpacity style={[styles.button, styles.applyButton]} onPress={onApply}>
           <Text style={styles.buttonText}>Apply</Text>
         </TouchableOpacity>
       </View>
