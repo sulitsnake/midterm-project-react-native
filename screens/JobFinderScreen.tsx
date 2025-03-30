@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { View, Text, TextInput, FlatList, TouchableOpacity, Switch } from "react-native";
+import { View, Text, TextInput, FlatList } from "react-native";
 import { JobContext } from "../context/JobContext";
 import JobItem from "../components/JobItem";
 import styles from "../styles/styles";
@@ -11,7 +11,7 @@ import { useTheme } from "../context/ThemeContext";
 const JobFinderScreen: React.FC = () => {
   const jobContext = useContext(JobContext);
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList, "JobFinder">>();
-  const { isDarkMode, toggleTheme } = useTheme(); 
+  const { isDarkMode } = useTheme(); 
   const [search, setSearch] = useState("");
 
   if (!jobContext) return <Text>Loading...</Text>;
@@ -24,10 +24,7 @@ const JobFinderScreen: React.FC = () => {
 
   return (
     <View style={[styles.container, isDarkMode && styles.darkContainer]}>
-      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("SavedJobs")}>
-        <Text style={styles.buttonText}>Go to Saved Jobs</Text>
-      </TouchableOpacity>
-
+  
       <TextInput
         style={[styles.searchInput, isDarkMode && styles.darkInput]}
         placeholder="Search jobs..."
@@ -35,14 +32,6 @@ const JobFinderScreen: React.FC = () => {
         value={search}
         onChangeText={setSearch}
       />
-
-      {/* toggler */}
-      <View style={styles.toggleContainer}>
-        <Text style={[styles.toggleText, isDarkMode && styles.darkText]}>
-          {isDarkMode ? "Dark Mode On" : "Dark Mode Off"}
-        </Text>
-        <Switch value={isDarkMode} onValueChange={toggleTheme} />
-      </View>
 
       <FlatList
         data={filteredJobs}
