@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, ScrollView } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../navigation/types";
+import { useTheme } from "../context/ThemeContext"; 
 import styles from "../styles/styles";
 
 type Props = NativeStackScreenProps<RootStackParamList, "ApplicationForm">;
 
 const ApplicationFormScreen: React.FC<Props> = ({ route, navigation }) => {
   const { jobId, jobTitle } = route.params;
+  const { isDarkMode } = useTheme(); 
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [contact, setContact] = useState("");
@@ -69,26 +72,26 @@ const ApplicationFormScreen: React.FC<Props> = ({ route, navigation }) => {
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.header}>Apply for {jobTitle}</Text>
-      <Text style={styles.subHeader}>Job ID: {jobId}</Text>
+    <ScrollView contentContainerStyle={[styles.container, isDarkMode && styles.darkContainer]}>
+      <Text style={[styles.header, isDarkMode && styles.darkText]}>Apply for {jobTitle}</Text>
+      <Text style={[styles.subHeader, isDarkMode && styles.darkText]}>Job ID: {jobId}</Text>
 
       <TextInput
-        style={styles.input}
+        style={[styles.input, isDarkMode && styles.darkInput]}
         placeholder="Full Name"
-        placeholderTextColor="#C0C0C0"
+        placeholderTextColor={isDarkMode ? "#A0A0A0" : "#C0C0C0"}
         value={name}
         onChangeText={(text) => {
           setName(text);
           setErrors((prev) => ({ ...prev, name: "" }));
         }}
       />
-      {errors.name ? <Text style={styles.errorText}>{errors.name}</Text> : null}
+      {errors.name ? <Text style={[styles.errorText, isDarkMode && styles.darkErrorText]}>{errors.name}</Text> : null}
 
       <TextInput
-        style={styles.input}
+        style={[styles.input, isDarkMode && styles.darkInput]}
         placeholder="Email"
-        placeholderTextColor="#C0C0C0"
+        placeholderTextColor={isDarkMode ? "#A0A0A0" : "#C0C0C0"}
         value={email}
         onChangeText={(text) => {
           setEmail(text);
@@ -96,12 +99,12 @@ const ApplicationFormScreen: React.FC<Props> = ({ route, navigation }) => {
         }}
         keyboardType="email-address"
       />
-      {errors.email ? <Text style={styles.errorText}>{errors.email}</Text> : null}
+      {errors.email ? <Text style={[styles.errorText, isDarkMode && styles.darkErrorText]}>{errors.email}</Text> : null}
 
       <TextInput
-        style={styles.input}
+        style={[styles.input, isDarkMode && styles.darkInput]}
         placeholder="Contact Number"
-        placeholderTextColor="#C0C0C0"
+        placeholderTextColor={isDarkMode ? "#A0A0A0" : "#C0C0C0"}
         value={contact}
         onChangeText={(text) => {
           setContact(text);
@@ -109,12 +112,12 @@ const ApplicationFormScreen: React.FC<Props> = ({ route, navigation }) => {
         }}
         keyboardType="phone-pad"
       />
-      {errors.contact ? <Text style={styles.errorText}>{errors.contact}</Text> : null}
+      {errors.contact ? <Text style={[styles.errorText, isDarkMode && styles.darkErrorText]}>{errors.contact}</Text> : null}
 
       <TextInput
-        style={styles.textArea}
+        style={[styles.textArea, isDarkMode && styles.darkInput]}
         placeholder="Why should we hire you?"
-        placeholderTextColor="#C0C0C0"
+        placeholderTextColor={isDarkMode ? "#A0A0A0" : "#C0C0C0"}
         value={reason}
         onChangeText={(text) => {
           setReason(text);
@@ -122,7 +125,7 @@ const ApplicationFormScreen: React.FC<Props> = ({ route, navigation }) => {
         }}
         multiline
       />
-      {errors.reason ? <Text style={styles.errorText}>{errors.reason}</Text> : null}
+      {errors.reason ? <Text style={[styles.errorText, isDarkMode && styles.darkErrorText]}>{errors.reason}</Text> : null}
 
       <TouchableOpacity style={styles.button} onPress={submitApplication}>
         <Text style={styles.buttonText}>Submit Application</Text>

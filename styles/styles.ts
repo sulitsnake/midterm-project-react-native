@@ -114,8 +114,40 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   
+  toggleContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginVertical: 12,
+  },
   
+  toggleText: {
+    fontSize: 16,
+    color: "#333",
+  },
   
+  darkContainer: {
+    backgroundColor: "#121212",
+  },
+  
+  darkText: {
+    color: "#fff",
+  },
+  
+  darkInput: {
+    backgroundColor: "#333",
+    color: "#fff",
+    borderColor: "#555",
+  },
+  
+  darkJobItem: {
+    backgroundColor: "#333",
+    borderColor: "#555",
+  },
+
+  darkErrorText: {
+    color: "#ff6961",
+  },
 
 
 });
